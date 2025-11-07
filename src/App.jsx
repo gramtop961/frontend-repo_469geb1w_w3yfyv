@@ -1,28 +1,33 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Header from "./components/Header";
+import PatientForm from "./components/PatientForm";
+import DoseResult from "./components/DoseResult";
+import InfoPanel from "./components/InfoPanel";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [result, setResult] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div dir="rtl" className="min-h-screen bg-gradient-to-b from-white to-indigo-50/40">
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
+        <Header />
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="md:col-span-2 space-y-6">
+            <PatientForm onCalculate={setResult} />
+            <DoseResult result={result} />
+          </div>
+          <div>
+            <InfoPanel />
+          </div>
         </div>
+
+        <footer className="mt-10 text-center text-xs text-gray-500">
+          ساخته‌شده برای اهداف آموزشی — همیشه با راهنماهای بالینی معتبر تطبیق دهید.
+        </footer>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
